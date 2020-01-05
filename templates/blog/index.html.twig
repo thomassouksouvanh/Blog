@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello KHAM Blog!{% endblock %}
+
+{% block body %}
+    <section>
+        {%  for article in articles  %}
+        <div class="article">
+            <h2>{{ article.title}}</h2>
+            <div class="metadata">Ecrit le {{ article.createdAt | date ('d/m/Y')}} a {{ article.createdAt | date ('H:i') }} dans la categorie politique</div>
+            <div class="content">
+                <img src="{{ article.image }}" alt="">
+                <h3> {{ article.title | raw }}</h3>
+                <p> {{ article.content | raw }} </p>
+                <a href="{{ path('blog_show', {'id':article.id}) }}" class="btn btn-primary">Lire la suite</a>
+            </div>
+        </div>
+        {%  endfor %}
+    </section>
+{% endblock %}

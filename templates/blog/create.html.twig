@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <section>
+        <div class="article">
+            {% if editMode %}
+                <h2>Modification de l'article</h2>
+            {% else %}
+                <h2>Creation d'un nouvel article</h2>
+            {% endif %}
+            {{ form_start(formArticle) }}
+                {# {{ form_errors("Votre titre doit contenir un minimum de 10 caracteres") }}#}
+            {{ form_row(formArticle.title,  {'attr':{'placeholder':"Titre de l'article"}}) }}
+            {{ form_row(formArticle.category,  {'attr':{'placeholder':"Catégorie de l'article"}}) }}
+            {{ form_row(formArticle.content,  {'attr':{'placeholder':"Contenude l'article"}}) }}
+               {# {{ form_errors("Cette URL n'existe pas") }} #}
+            {{ form_row(formArticle.image,  {'attr':{'placeholder':"l'URL de l'image"}}) }}
+
+            <button type="submit" class="btn btn-success">
+            {% if editMode %}
+            Enrgistrer les modifications
+            {% else %}
+            Ajouter un nouvel article
+                {% endif %}
+            </button>
+            {{ form_end(formArticle) }}
+        </div>
+    </section>
+{% endblock %}
